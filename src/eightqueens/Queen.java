@@ -1,6 +1,10 @@
 package eightqueens;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /** Ферзь, который самостоятельно ищет приемлемую позицию.
  */
@@ -28,8 +32,8 @@ public class Queen {
 
     /* --------------------------- Сосед слева ---------------------------- */
     private final Queen _leftNeighbor;
-    
-    
+
+
 
     /* =========================== Операции =============================== */
 
@@ -50,9 +54,13 @@ public class Queen {
         boolean isFind = false;
 
         // Ищем позицию собственными силами...
+
         // Пока позиция не найдена и не вышли за пределы доски
+        while(!isFind && col() < _owner.colCount())
         {
-            // Делаем шаг "вверх"
+            // Делаем шаг "вправо"
+            _pos = new Point(col()+1, row()+1);
+            isFind = true;
         }
 
         // Если не удалось найти позицию собственными силами
@@ -95,9 +103,12 @@ public class Queen {
     /** Отрисовка ферзя
      * @param g графический контекст, в котором происходит отрисовка ферзя.
     */
-    public void paint(Graphics g) {
-        g.setColor(Color.red);
-        g.fillOval((col()-1)*Desk.CELL_SIZE+3, (_owner.rowCount() - row())*Desk.CELL_SIZE+3,
-                    Desk.CELL_SIZE-6, Desk.CELL_SIZE-6);
+    public void paint(Graphics g) throws IOException {
+        final BufferedImage image = ImageIO.read(new File("src\\eightqueens\\resources\\white-queen.png"));
+//        g.setColor(Color.gray);
+//        g.drawImage(image, (col()-1)*Desk.CELL_SIZE+3, (_owner.rowCount() - row())*Desk.CELL_SIZE+3, null);
+        g.drawImage(image, 0, 0, null);
+//        g.fillOval((col()-1)*Desk.CELL_SIZE+3, (_owner.rowCount() - row())*Desk.CELL_SIZE+3,
+//                    Desk.CELL_SIZE-6, Desk.CELL_SIZE-6);
     }
 }

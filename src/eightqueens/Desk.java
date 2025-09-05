@@ -2,6 +2,7 @@ package eightqueens;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -187,7 +188,11 @@ public class Desk extends JPanel implements Iterable<Queen>{
 
         // отрисовка ферзей
         for(Queen q: this._queens){
-            q.paint(g);
+            try {
+                q.paint(g);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
