@@ -11,7 +11,7 @@ public class Desk extends JPanel implements Iterable<Queen>{
 
     /* ========================== Константы =============================== */
 
-    static final int CELL_SIZE = 30;
+    static final int CELL_SIZE = 75;
     
     /* =========================== Свойства =============================== */
     
@@ -100,7 +100,7 @@ public class Desk extends JPanel implements Iterable<Queen>{
         // Настраиваем визуальное отображение доски
         setBounds(0, 0, colCount()*CELL_SIZE, rowCount()*CELL_SIZE);
         setPreferredSize(new Dimension(colCount()*CELL_SIZE, rowCount()*CELL_SIZE) );
-        setBackground(Color.white);                
+        setBackground(new Color(239, 217, 180));
     }
     
     private Point[] initQueensPos() {
@@ -176,12 +176,12 @@ public class Desk extends JPanel implements Iterable<Queen>{
     {
         // отрисовка черных клеток
         super.paint(g);
-        g.setColor(Color.black);
+        g.setColor(new Color(180, 134, 99));
         for(int col=0; col < colCount(); col++)
         {
             for(int row=0; row < rowCount()/2; row++)
             {
-                g.fillRect(row*2*CELL_SIZE+CELL_SIZE-CELL_SIZE*(col%2), col*CELL_SIZE, 
+                g.fillRect(row*2*CELL_SIZE+CELL_SIZE-CELL_SIZE*(col%2), col*CELL_SIZE,
                             CELL_SIZE, CELL_SIZE);
             }
         }
