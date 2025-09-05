@@ -18,7 +18,7 @@ public class Desk extends JPanel implements Iterable<Queen>{
     /** Размеры доски (в количестве клеток).
     */
     public int colCount(){
-        return 8;
+        return 9;
     }
     public int rowCount(){
         return 8;
@@ -177,15 +177,14 @@ public class Desk extends JPanel implements Iterable<Queen>{
         // отрисовка черных клеток
         super.paint(g);
         g.setColor(new Color(180, 134, 99));
-        for(int col=0; col < colCount(); col++)
+        for(int row=0; row < rowCount(); row++)
         {
-            for(int row=0; row < rowCount()/2; row++)
+            for(int col=row % 2; col < colCount(); col+=2)
             {
-                g.fillRect(row*2*CELL_SIZE+CELL_SIZE-CELL_SIZE*(col%2), col*CELL_SIZE,
-                            CELL_SIZE, CELL_SIZE);
+                g.fillRect(col*CELL_SIZE, row*CELL_SIZE, CELL_SIZE, CELL_SIZE);
             }
         }
-        
+
         // отрисовка ферзей
         for(Queen q: this._queens){
             q.paint(g);
