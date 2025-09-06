@@ -24,7 +24,8 @@ public class Desk extends JPanel implements Iterable<Queen>{
     public int rowCount(){
         return 8;
     }
-    
+
+    // delete it
     public int rowAboveDesk() {
         return rowCount()+1;
     }
@@ -32,6 +33,10 @@ public class Desk extends JPanel implements Iterable<Queen>{
         return 0;
     }
 
+    public int rowLeftDesk() { return 0; }
+    public int rowRightDesk() { return colCount()+1; }
+
+    // delete it
     public Point abovePos(Point p) {
         Point ap = null;
         if(p.y < rowAboveDesk()) {
@@ -40,12 +45,29 @@ public class Desk extends JPanel implements Iterable<Queen>{
         return ap;
     }
 
+    // delete it
     public Point belowPos(Point p) {
         Point bp = null;
         if(p.y > rowBelowDesk()) {
             bp = new Point(p.x, p.y-1);
         }
         return bp;
+    }
+
+    public Point leftPos(Point p) {
+        Point lp = null;
+        if(p.x > rowLeftDesk()) {
+            lp = new Point(p.x-1, p.y);
+        }
+        return lp;
+    }
+
+    public Point rightPos(Point p) {
+        Point rp = null;
+        if(p.x < rowRightDesk()) {
+            rp = new Point(p.x+1, p.y);
+        }
+        return rp;
     }
 
     /* Список ферзей */    
