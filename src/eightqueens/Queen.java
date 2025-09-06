@@ -105,10 +105,10 @@ public class Queen {
     */
     public void paint(Graphics g) throws IOException {
         final BufferedImage image = ImageIO.read(new File("src\\eightqueens\\resources\\white-queen.png"));
-//        g.setColor(Color.gray);
+        g.setColor(Color.gray);
 //        g.drawImage(image, (col()-1)*Desk.CELL_SIZE+3, (_owner.rowCount() - row())*Desk.CELL_SIZE+3, null);
-        g.drawImage(image, 0, 0, null);
-//        g.fillOval((col()-1)*Desk.CELL_SIZE+3, (_owner.rowCount() - row())*Desk.CELL_SIZE+3,
-//                    Desk.CELL_SIZE-6, Desk.CELL_SIZE-6);
+//        g.drawImage(image, 0, 0, null);
+        g.fillOval((col()-1)*Desk.CELL_SIZE+3, (_owner.rowCount() - row())*Desk.CELL_SIZE+3,
+                    Desk.CELL_SIZE-6, Desk.CELL_SIZE-6);
     }
 }
